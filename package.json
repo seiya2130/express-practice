@@ -1,0 +1,29 @@
+{
+  "name": "express-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seiya2130/express-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seiya2130/express-practice/issues"
+  },
+  "homepage": "https://github.com/seiya2130/express-practice#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.16",
+    "@types/node": "^18.11.18",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
