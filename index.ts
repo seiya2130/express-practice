@@ -10,11 +10,6 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/api', apiRoutes);
 
-app.get('/', async (_req: Request, res: Response) => {
-  const todos = await Todo.find();
-  res.json(todos);
-})
-
 try {
   app.listen(PORT, () => {
     console.log(`dev server running at: http://localhost:${PORT}/`)
