@@ -1,45 +1,34 @@
 import express from 'express';
 import Todo from '../todo';
+import { body } from "express-validator";
+import { registTodo, updateTodo, getAllTodo, getTodoById, deleteTodo } from '../controller/todo';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    const todos = await Todo.find();
-    res.json(todos);
-});
+router.get('/', 
+    getAllTodo
+);
 
-router.get('/:id', async (req, res) => {
-    const id = req.params.id;
-    const todo = await Todo.findById(id);
-    res.json(todo);
-});
+router.get('/:id', 
+    getTodoById
+);
 
-router.post('/', async(req, res) => {
-    const todo  = new Todo(req.body);
-    const newTodo = await todo.save();
-    res.json(newTodo);
-});
+router.post('/', 
+    body('name').notEmpty(),
+    body('status').notEmpty().isInt({ min: 0, max: 2 }),
+    body('deadline').notEmpty(),
+    registTodo
+);
 
-router.patch('/:id', async (req, res) => {
-    const id = req.params.id;
-    const todo = await Todo.findById(id);
+router.patch('/:id',
+    body('name').optional().notEmpty(),
+    body('status').optional().notEmpty().isInt({ min: 0, max: 2 }),
+    body('deadline').optional().notEmpty(),
+    updateTodo
+);
 
-    const { name, status, deadline} = req.body;
-
-    if(todo !== null){
-        todo.name = name;
-        todo.status = status;
-        todo.deadline = deadline
-        await todo!.save();
-    }
-
-    res.json(todo);
-});
-
-router.delete('/:id', async (req, res) => {
-    const id = req.params.id;
-    await Todo.deleteOne({ id });
-    res.json({ "msg" : "Delete Succeeded"});
-});
+router.delete('/:id', 
+    deleteTodo
+);
 
 export default router;
