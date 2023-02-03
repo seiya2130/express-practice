@@ -12,17 +12,22 @@ Content-Type: application/json
 {
     "name": "test",
     "status": 2,
-    "deadline": ""
+    "deadline": "2023-01-31"
 }
 
 ###
 
-PATCH  http://localhost:3000/api/todos/63d7b59fa0d2603ec6053889
+PATCH  http://localhost:3000/api/todos/63dc5549e7620f34695a291a
 Content-Type: application/json
 
 {
-    "name": "追加タスク3"
+    "status": 1
 }
 
 ###
 DELETE http://localhost:3000/api/todos/63d12501fdcba41f9cd3f
+
+###
+GET http://localhost:3000/api/t
+
+###

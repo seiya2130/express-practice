@@ -31,7 +31,7 @@ async function registTodo(req: Request, res: Response) {
 };
 
 async function updateTodo(req: Request, res: Response) {
-
+    
     const errors = validationResult(req);
     
     if(!errors.isEmpty()){
@@ -56,7 +56,9 @@ async function updateTodo(req: Request, res: Response) {
 };
 
 async function deleteTodo(req: Request, res: Response) {
+
     const id = req.params.id;
+
     const { deletedCount } = await Todo.deleteOne({ id });
     
     if(deletedCount === 0) return res.status(404).json({ msg: 'Not Found'})
